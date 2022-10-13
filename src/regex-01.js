@@ -8,7 +8,7 @@
  *
  */
 
-const match = require('nodemon/lib/monitor/match');
+require('nodemon/lib/monitor/match');
 
 /**
  * Tests the string against a regular expression.
