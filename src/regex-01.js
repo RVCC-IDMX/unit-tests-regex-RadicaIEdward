@@ -8,6 +8,8 @@
  *
  */
 
+const match = require('nodemon/lib/monitor/match');
+
 /**
  * Tests the string against a regular expression.
  * @param {string} str - the string to be tested
@@ -18,7 +20,10 @@
  * ? example: testString('abc', /def/) // false
  */
 function testString(str, re) {
-  // write your code here & return value
+  if (re.test(str)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -32,10 +37,15 @@ function testString(str, re) {
  * ? must create a regular expression using the constructor function new RegExp()
  * ? https://mzl.la/3lWGpRa
  * ? hint: create a string with the join array method and the | character as the separator
- * ? The '|' character acts like the OR operator 
+ * ? The '|' character acts like the OR operator
  */
 function testStringOr(str, arr) {
-  // write your code here & return value
+  const regex = new RegExp(arr.join('|'));
+  console.log(regex);
+  if (regex.test(str)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -49,7 +59,11 @@ function testStringOr(str, arr) {
  * ? must create a regular expression using the constructor function new RegExp()
  */
 function testStringIgnoreCase(str, match) {
-  // write your code here & return value
+  const regex = new RegExp(match, 'i');
+  if (regex.test(str)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -62,7 +76,8 @@ function testStringIgnoreCase(str, match) {
  * ? example: countVowels('the boy is lost in the woods, HELP US!') => 10
  */
 function countVowels(str) {
-  // write your code here & return value
+  const vowels = /[aeiou]/gi;
+  return str.match(vowels).length;
 }
 
 /**
@@ -76,7 +91,7 @@ function countVowels(str) {
  * ? must use the replace() string method - https://mzl.la/2Zsw4F6
  */
 function replaceVowels(str, ch) {
-  // write your code here & return value
+  return str.replace(/[aeiou]+/gi, ch);
 }
 
 /**
@@ -89,7 +104,10 @@ function replaceVowels(str, ch) {
  * ? must create a regular expression using the constructor function new RegExp()
  */
 function isPrefix(str, prefix) {
-  // write your code here & return value
+  if (str.startsWith(prefix)) {
+    return true;
+  }
+  return false;
 }
 
 module.exports = {
